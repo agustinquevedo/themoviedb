@@ -17,7 +17,7 @@ $widescreen-enabled: false;
 $fullhd-enabled: false;
 
 // Update some of Bulma's component variables
-//
+$card-content-padding: 1rem;
 
 // Import all Bulma
 //
@@ -34,3 +34,47 @@ $fullhd-enabled: false;
 // @import "../../node_modules/bulma/sass/components/navbar.sass";
 // @import "../../node_modules/bulma/sass/layout/hero.sass";
 // @import "../../node_modules/bulma/sass/layout/section.sass";
+
+// MovieCard Component
+.card {
+    max-width: 200px;
+    max-height: 300px;
+    overflow: hidden;
+    transition: transform 500ms ease;
+    .custom-card-content {
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+        opacity: 0;
+        color: #FFFFFF;
+        background: rgb(0,0,0);
+        background: -moz-linear-gradient(
+            hsl(0 0% 0% / 0),
+            hsl(20 0% 0% / 0.7) 20%,
+            hsl(0 0% 0% / 1)
+        );
+        background: -webkit-linear-gradient(
+            hsl(0 0% 0% / 0),
+            hsl(20 0% 0% / 0.7) 20%,
+            hsl(0 0% 0% / 1)
+        );
+        background: linear-gradient(
+            hsl(0 0% 0% / 0),
+            hsl(20 0% 0% / 0.7) 20%,
+            hsl(0 0% 0% / 1)
+        );
+        
+        .title {
+            color: #FFFFFF;
+        }
+    }
+    &:hover {
+        transform: scale(1.02);
+    }
+    &:hover .custom-card-content{
+        transform: translateY(-100%);
+        transition: 500ms transform ease;
+        opacity: 1;
+        transition: opacity 500ms linear;
+    }
+}

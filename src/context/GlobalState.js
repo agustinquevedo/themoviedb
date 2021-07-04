@@ -24,8 +24,12 @@ export const GlobalProvider = props => {
         dispatch({type: "ADD_TO_FAVORITES", payload: movie})
     }
 
+    const removeFromFavoritesList = id => {
+        dispatch({type: "REMOVE_FROM_FAVORITES", payload: id})
+    }
+
     return (
-        <GlobalContext.Provider value={{ favoritesList: state.favoritesList, addToFavoritesList }}>
+        <GlobalContext.Provider value={{ favoritesList: state.favoritesList, addToFavoritesList, removeFromFavoritesList }}>
             {props.children}
         </GlobalContext.Provider>
     )

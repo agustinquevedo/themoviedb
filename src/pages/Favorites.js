@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
+import MovieCard from "../components/MovieCard";
 
 const Favorites = () => {
     const { favoritesList } = useContext(GlobalContext)
@@ -7,35 +8,25 @@ const Favorites = () => {
     return (
     <div className="container pt-2 pb-2">
         <h2 className="title is-3 is-size-5-mobile">My favorites movies</h2>
-        <div className="columns is-multiline">
-            {
-                favoritesList.map(movie => (
-                    <div className="column is-one-quarter is-full-mobile">
-                        <div className="card" key={movie.id}>
-                            <div className="card-image">
-                                <figure className="image is-2by3">
-                                    {
-                                        movie.poster_path ? (
-                                            <img 
-                                                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} 
-                                                alt={`${movie.title} Poster`}
-                                                
-                                            />
-                                        ) : (
-                                            <img 
-                                                src={"https://via.placeholder.com/200x300/0D253F/FFFFFF?text=Poster+not+found"}
-                                                alt={"Poster not found"}
-                                            />
-                                        )
-                                    }
-                                </figure>
-                            </div>
+        { favoritesList.length > 0 ? (
+            <div className="columns is-multiline">
+                {
+                    favoritesList.map(movie => (
+                        <div className="column is-one-quarter is-full-mobile" key={movie.id}>
+                            <MovieCard movie={movie} type="favoritesList"/>
                         </div>
-                    </div>
-                ))
-            }
+                    ))
+                }
+            </div>
+        ) : (
             
-        </div>
+            <div className="notification is-link is-light">
+                <p>No movies in your favorites list, add some!</p>
+            </div>
+            
+        )
+    }
+        
     </div>
     );
 }

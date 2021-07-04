@@ -4,6 +4,11 @@ export default function AppReducer(state, action) {
             return {
                 ...state,
                 favoritesList: [action.payload, ...state.favoritesList]
+            };
+        case "REMOVE_FROM_FAVORITES":
+            return {
+                ...state,
+                favoritesList: state.favoritesList.filter(movie => movie.id !== action.payload)
             }
         default:
             return state;
