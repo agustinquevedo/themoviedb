@@ -1,8 +1,10 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '../context/GlobalState'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 const ResultCard = ({movie}) => {
-    const { addToFavoritesList, favoritesList  } = useContext(GlobalContext)
+    const { addToFavoritesList, favoritesList } = useContext(GlobalContext)
 
     let storedMovie = favoritesList.find((o) => o.id === movie.id);
 
@@ -37,16 +39,24 @@ const ResultCard = ({movie}) => {
                         </p>
                         <div className="field is-grouped">
                             <p className="control">
-                                <button 
+                                <button
                                     className="button is-danger is-outlined"
                                     disabled={favoritesListDisabled}
                                     onClick={() => addToFavoritesList(movie)}
                                 >
-                                    Add to Favorites
+                                    <span className="icon is-small">
+                                        <FontAwesomeIcon icon={faHeart} />
+                                    </span>
+                                    <span>Add to Favorites</span>
                                 </button>
                             </p>
                             <p className="control">
-                                <button className="button is-primary is-outlined">Movie Details</button>
+                                <button
+                                    className="button is-primary is-outlined"
+                                    onClick={() => console.log(movie.id)}
+                                >
+                                    Movie Details
+                                </button>
                             </p>
                         </div>
                     </div>

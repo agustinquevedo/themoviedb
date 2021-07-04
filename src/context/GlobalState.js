@@ -6,6 +6,7 @@ const initialState = {
     favoritesList: localStorage.getItem('favoritesList') 
     ? JSON.parse(localStorage.getItem('favoritesList')) 
     : [],
+    selectedMovie: null
 }
 
 // Create context
@@ -20,16 +21,22 @@ export const GlobalProvider = props => {
     }, [state])
 
     // Actions
+    // Add to favorites
     const addToFavoritesList = movie => {
         dispatch({type: "ADD_TO_FAVORITES", payload: movie})
     }
-
+    // Remove from favorites
     const removeFromFavoritesList = id => {
         dispatch({type: "REMOVE_FROM_FAVORITES", payload: id})
     }
 
     return (
-        <GlobalContext.Provider value={{ favoritesList: state.favoritesList, addToFavoritesList, removeFromFavoritesList }}>
+        <GlobalContext.Provider 
+            value={{ 
+                favoritesList: state.favoritesList, 
+                addToFavoritesList, 
+                removeFromFavoritesList
+                 }}>
             {props.children}
         </GlobalContext.Provider>
     )

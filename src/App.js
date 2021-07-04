@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 // Pages
 import Home from './pages/Home'
 import Favorites from './pages/Favorites'
+import Movie from "./pages/Movie"
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path="/favorites" component={Favorites}/>
+          <Route exact path="/movie/:id" component={Movie}/>
         </Switch>
       </HashRouter>
     </GlobalProvider>

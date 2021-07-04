@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 // Components
 import ResultCard from "../components/ResultCard";
 
@@ -27,14 +29,20 @@ const Home = () => {
             <div className="hero-body">
                 <div className="container is-max-desktop">
                     <h1 className="title is-1 is-size-3-mobile">Welcome to The Movie Data Base.</h1>
-                    <h2 className="subtitle is-3 is-size-6-mobile">Explore now millions of movies</h2>
-                    <input 
-                        className="input is-medium is-rounded" 
-                        type="text" 
-                        placeholder="Search for a movie" 
-                        value={query}
-                        onChange={onChange}
-                    />
+                    <h2 className="subtitle is-3 is-size-6-mobile has-text-link">Explore now millions of movies.</h2>
+                    <p className="control has-icons-left">
+                        <input 
+                            className="input is-medium is-rounded" 
+                            type="text" 
+                            placeholder="Search for a movie" 
+                            value={query}
+                            onChange={onChange}
+                        />
+                         <span className="icon is-small is-left">
+                            <FontAwesomeIcon icon={faSearch} />
+                        </span>
+                    </p>
+                    
                     
                 </div>
             </div>

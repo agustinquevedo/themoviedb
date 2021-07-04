@@ -1,5 +1,7 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '../context/GlobalState'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const MovieCard = ({movie, type}) => {
     const {removeFromFavoritesList} = useContext(GlobalContext)
@@ -27,10 +29,13 @@ const MovieCard = ({movie, type}) => {
             <div className="custom-card-content">
                 <h4 className="title is-6">{movie.title}</h4>
                 <button 
-                    class="button is-small is-danger is-outlined"
+                    className="button is-small is-danger is-outlined"
                     onClick={() => removeFromFavoritesList(movie.id)}
                 >
-                    Remove
+                    <span className="icon is-small">
+                        <FontAwesomeIcon icon={faTrash} />
+                    </span>
+                    <span>Remove</span>
                 </button>
                     
                 
