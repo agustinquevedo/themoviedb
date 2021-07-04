@@ -3,7 +3,9 @@ import AppReducer from './AppReducer'
 
 // Initial state
 const initialState = {
-    favoritesList: [],
+    favoritesList: localStorage.getItem('favoritesList') 
+    ? JSON.parse(localStorage.getItem('favoritesList')) 
+    : [],
 }
 
 // Create context
@@ -12,6 +14,10 @@ export const GlobalContext = createContext(initialState)
 // Provider component
 export const GlobalProvider = props => {
     const [state, dispatch] = useReducer(AppReducer, initialState)
+
+    useEffect(() => {
+        localStorage.setItem('favoritesList', JSON.stringify(state.favoritesList))
+    }, [state])
 
     // Actions
     const addToFavoritesList = movie => {
