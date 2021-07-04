@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { HashRouter, Switch, Route } from "react-router-dom"
 // Provider
 import { GlobalProvider } from "./context/GlobalState"
 // Components
@@ -11,14 +11,14 @@ import Favorites from './pages/Favorites'
 const App = () => {
   return (
     <GlobalProvider>
-      <Router>
+      <HashRouter basename="/">
         <Navbar />
         
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path="/favorites" component={Favorites}/>
         </Switch>
-      </Router>
+      </HashRouter>
     </GlobalProvider>
   );
 }
